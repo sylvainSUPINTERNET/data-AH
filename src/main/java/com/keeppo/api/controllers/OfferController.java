@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
-import com.keeppo.api.dto.OfferDto;
 import com.keeppo.api.repository.OfferRepository;
 import com.keeppo.api.services.OfferService;
 

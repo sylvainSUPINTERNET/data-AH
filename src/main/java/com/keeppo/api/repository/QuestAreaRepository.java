@@ -5,14 +5,18 @@ import java.util.concurrent.CompletableFuture;
 
 import com.keeppo.api.models.QuestArea;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface QuestAreaRepository extends JpaRepository<QuestArea, Long> {
+public interface QuestAreaRepository extends PagingAndSortingRepository<QuestArea, Long> {
     @Async
 	@Query("select a from QuestArea a")
 	CompletableFuture<List<QuestArea>> findAllAreas();
+
+	@Async
+    public <S extends QuestArea> S save(S entity);
+	
 }
