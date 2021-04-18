@@ -15,8 +15,5 @@ public interface QuestAreaRepository extends PagingAndSortingRepository<QuestAre
     @Async
 	@Query("select a from QuestArea a")
 	CompletableFuture<List<QuestArea>> findAllAreas();
-
-	@Async
-    public <S extends QuestArea> S save(S entity);
 	
 }

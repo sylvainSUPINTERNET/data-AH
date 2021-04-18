@@ -1,21 +1,22 @@
 package com.keeppo.api.dto;
-
-
-
 public class QuestAreaDto {
-    public Long id;
+    public long id;
     public String name;
 
-    public QuestAreaDto(Long id,String name){
+    public QuestAreaDto(){
+        
+    }
+
+    public QuestAreaDto(long id,String name){
         this.name = name;
         this.id = id;
     }
 
-    public Long getId() {
+    public long getId() {
         return this.id;
     }
 
-    public void setId(Long id){
+    public void setId(long id){
         this.id = id;
     }
 

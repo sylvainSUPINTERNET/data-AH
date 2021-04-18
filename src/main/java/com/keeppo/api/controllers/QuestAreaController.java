@@ -1,5 +1,6 @@
 package com.keeppo.api.controllers;
 
+import com.keeppo.api.dto.QuestAreaCreateDto;
 import com.keeppo.api.services.QuestAreaService;
 
 import org.apache.http.HttpStatus;
@@ -21,8 +22,8 @@ public class QuestAreaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addQuestArea(@RequestBody String name) {
-        return ResponseEntity.status(HttpStatus.SC_OK).body(this.questAreaService.createQuestArea(name));
+    public ResponseEntity<?> addQuestArea(@RequestBody QuestAreaCreateDto questAreaCreateDto) {
+        return ResponseEntity.status(HttpStatus.SC_OK).body(this.questAreaService.createQuestArea(questAreaCreateDto.getName()));
     }
 
     @GetMapping

@@ -10,26 +10,26 @@ import com.keeppo.api.models.QuestArea;
 import com.keeppo.api.repository.QuestAreaRepository;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class QuestAreaService {
 
+    @Autowired
     QuestAreaRepository questAreaRepository;
 
     ModelMapper modelMapper = new ModelMapper();
 
-    public QuestAreaService() {}
-    
-    public QuestAreaService(QuestAreaRepository questAreaRepository){
-        this.questAreaRepository = questAreaRepository;
+    public QuestAreaService() {
     }
-
+    
     public QuestAreaDto createQuestArea(String name) {
-   
-        QuestArea q = this.questAreaRepository.save(new QuestArea(name));
+        QuestArea questArea = new QuestArea(name);
+        QuestArea q = this.questAreaRepository.save(questArea);
         QuestAreaDto qDto = this.modelMapper.map(q, QuestAreaDto.class);
         return qDto;
+
     }
 
     public List<QuestAreaDto> getQuestAreas() {

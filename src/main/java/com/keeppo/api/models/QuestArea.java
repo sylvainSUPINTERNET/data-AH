@@ -1,10 +1,15 @@
 package com.keeppo.api.models;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table( name = "areas")
@@ -14,6 +19,11 @@ public class QuestArea {
     private Long id;
     
     private String name;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
     public QuestArea(){}
 
@@ -25,6 +35,10 @@ public class QuestArea {
         return this.id;
     }
 
+    public void setId(Long id){
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -33,6 +47,13 @@ public class QuestArea {
         this.name = name;
     }
 
+    public LocalDateTime getCreatedAt(){
+        return this.createdAt;
+    }
+
+    public LocalDateTime setUpDateTime(){
+        return this.updatedAt;
+    }
 
 
     
