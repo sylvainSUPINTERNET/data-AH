@@ -1,4 +1,14 @@
 spring:
+  profiles:
+    active:
+    - dev
+
+---
+# local dev
+
+spring:
+    profiles: dev
+
     datasource:
         password: root
         url: jdbc:postgresql://localhost:5432/keeppo
@@ -10,8 +20,25 @@ spring:
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.PostgreSQLDialect
-
 server:
     port : 7777
     servlet:
         context-path: /api/v1/
+---
+# change active profil to - test for testing 
+# Not required to change, since ActiveProfil in test annotation is test and h2 is scoped for this profil test
+
+spring:
+    profiles: test
+
+    datasource:
+        driverClassName: org.h2.Driver
+        url: jdbc:h2:mem:testdb;
+        username: sa
+    h2:
+        console:
+            enabled: true
+            path: /h2-console
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+
