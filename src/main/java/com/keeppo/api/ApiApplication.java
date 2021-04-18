@@ -10,9 +10,6 @@ public class ApiApplication implements Runnable {
 		SpringApplication.run(ApiApplication.class, args);
 	}
 
-
-
-
 	@Override
 	public void run() {
 	}
