@@ -19,6 +19,8 @@ public class QuestArea {
     private Long id;
     
     private String name;
+    
+    private String difficulty;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -27,8 +29,17 @@ public class QuestArea {
 
     public QuestArea(){}
 
-    public QuestArea(String name) {
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public QuestArea(String name, String difficulty) {
         this.name = name;
+        this.difficulty = difficulty;
     }
 
     public Long getId(){

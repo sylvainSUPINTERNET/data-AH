@@ -5,7 +5,6 @@ import com.keeppo.api.services.QuestAreaService;
 
 import org.apache.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +23,7 @@ public class QuestAreaController {
 
     @PostMapping
     public ResponseEntity<?> addQuestArea(@RequestBody QuestAreaCreateDto questAreaCreateDto) {
-        return ResponseEntity.status(HttpStatus.SC_OK).body(this.questAreaService.createQuestArea(questAreaCreateDto.getName()));
+        return ResponseEntity.status(HttpStatus.SC_OK).body(this.questAreaService.createQuestArea(questAreaCreateDto.getName(), questAreaCreateDto.getDifficulty()));
     }
 
     @GetMapping
