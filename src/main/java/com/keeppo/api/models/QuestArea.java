@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -20,7 +23,9 @@ public class QuestArea {
     
     private String name;
     
-    private String difficulty;
+    @ManyToOne
+    @JoinColumn(name="difficulty_id", nullable=true)
+    private QuestAreaDifficulty questAreaDifficulty;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -29,17 +34,9 @@ public class QuestArea {
 
     public QuestArea(){}
 
-    public String getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    public QuestArea(String name, String difficulty) {
+    public QuestArea(String name) {
         this.name = name;
-        this.difficulty = difficulty;
+
     }
 
     public Long getId(){
@@ -66,6 +63,13 @@ public class QuestArea {
         return this.updatedAt;
     }
 
+    public QuestAreaDifficulty getQuestAreaDifficulty(){
+        return this.questAreaDifficulty;
+    }
+
+    public void setQuestArDifficulty(QuestAreaDifficulty questAreaDifficulty){
+        this.questAreaDifficulty = questAreaDifficulty;
+    }
 
     
 }

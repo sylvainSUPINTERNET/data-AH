@@ -23,7 +23,7 @@ public class QuestAreaController {
 
     @PostMapping
     public ResponseEntity<?> addQuestArea(@RequestBody QuestAreaCreateDto questAreaCreateDto) {
-        return ResponseEntity.status(HttpStatus.SC_OK).body(this.questAreaService.createQuestArea(questAreaCreateDto.getName(), questAreaCreateDto.getDifficulty()));
+        return ResponseEntity.status(HttpStatus.SC_OK).body(this.questAreaService.createQuestArea(questAreaCreateDto.getName()));
     }
 
     @GetMapping

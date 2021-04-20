@@ -24,8 +24,8 @@ public class QuestAreaService {
     public QuestAreaService() {
     }
     
-    public QuestAreaDto createQuestArea(String name, String difficulty) {
-        QuestArea questArea = new QuestArea(name, difficulty);
+    public QuestAreaDto createQuestArea(String name) {
+        QuestArea questArea = new QuestArea(name);
         QuestArea q = this.questAreaRepository.save(questArea);
         QuestAreaDto qDto = this.modelMapper.map(q, QuestAreaDto.class);
         return qDto;
@@ -35,7 +35,7 @@ public class QuestAreaService {
     public List<QuestAreaDto> getQuestAreas() {
         CompletableFuture<List<QuestArea>> futur = this.questAreaRepository.findAllAreas();
         try {
-            List<QuestAreaDto> qa = futur.get().stream().map( q -> new QuestAreaDto(q.getId(), q.getName(), q.getDifficulty())).collect(Collectors.toList());
+            List<QuestAreaDto> qa = futur.get().stream().map( q -> new QuestAreaDto(q.getId(), q.getName())).collect(Collectors.toList());
             return qa;
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
