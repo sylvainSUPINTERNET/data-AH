@@ -15,7 +15,7 @@ spring:
         username: root
     jpa:
         hibernate:
-            ddl-auto: update
+            ddl-auto: update # COMMENT THIS IN PRODUCTION
             show-sql: true
         properties:
             hibernate:

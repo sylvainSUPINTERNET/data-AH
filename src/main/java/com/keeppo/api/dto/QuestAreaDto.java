@@ -2,6 +2,7 @@ package com.keeppo.api.dto;
 public class QuestAreaDto {
     public long id;
     public String name;
+    public QuestAreaDifficultyDto difficulty;
 
     public QuestAreaDto(){
         
@@ -12,6 +13,13 @@ public class QuestAreaDto {
         this.id = id;
     }
 
+    public QuestAreaDifficultyDto getDifficulty() {
+        return this.difficulty;
+    }
+
+    public void setDifficulty(QuestAreaDifficultyDto difficulty) {
+        this.difficulty = difficulty;
+    }
     public long getId() {
         return this.id;
     }

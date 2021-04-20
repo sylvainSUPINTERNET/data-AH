@@ -35,7 +35,7 @@ public class QuestAreaService {
     public List<QuestAreaDto> getQuestAreas() {
         CompletableFuture<List<QuestArea>> futur = this.questAreaRepository.findAllAreas();
         try {
-            List<QuestAreaDto> qa = futur.get().stream().map( q -> new QuestAreaDto(q.getId(), q.getName())).collect(Collectors.toList());
+            List<QuestAreaDto> qa = futur.get().stream().map( q -> this.modelMapper.map(q, QuestAreaDto.class)).collect(Collectors.toList());
             return qa;
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();

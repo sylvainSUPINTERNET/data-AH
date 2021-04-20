@@ -30,7 +30,10 @@ public class QuestAreaDifficultyService {
         for(String dfc: difficulties) {
             QuestAreaDifficultyDto qDifficultyDto = new QuestAreaDifficultyDto(dfc);
             QuestAreaDifficulty questAreaDifficulty = this.modelMapper.map(qDifficultyDto, QuestAreaDifficulty.class);
-            this.questAreaDifficultyRepository.save(questAreaDifficulty);
+            
+            if ( this.questAreaDifficultyRepository.findByDifficulty(dfc).isEmpty() ) {
+                this.questAreaDifficultyRepository.save(questAreaDifficulty);
+            }
         }
     }
 }
