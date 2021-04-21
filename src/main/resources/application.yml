@@ -24,6 +24,10 @@ server:
     port : 7777
     servlet:
         context-path: /api/v1/
+    ssl: # mkcert -pkcs12 localhost => DEV ONLY self signed 
+        key-store: classpath:localhost.p12
+        key-store-password: changeit # for dev purpose, we don't care
+        key-store-type: pkcs12
 ---
 # change active profil to - test for testing 
 # Not required to change, since ActiveProfil in test annotation is test and h2 is scoped for this profil test
