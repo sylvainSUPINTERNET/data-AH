@@ -23,8 +23,8 @@ public class QuestArea {
     
     private String name;
     
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "difficulty_id", nullable=true)
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "difficulty_id", nullable = true)
     private QuestAreaDifficulty questAreaDifficulty;
 
     @CreationTimestamp
